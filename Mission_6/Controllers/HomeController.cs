@@ -22,10 +22,6 @@ namespace Mission_6.Controllers
         {
             return View();
         }
-        public IActionResult Collection()
-        {
-            return View();
-        }
 
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
