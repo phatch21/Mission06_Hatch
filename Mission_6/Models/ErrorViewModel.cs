@@ -1,4 +1,4 @@
-namespace Mission_6.Models
+namespace Mission06_Hatch.Models
 {
     public class ErrorViewModel
     {

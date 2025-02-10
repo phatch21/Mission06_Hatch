@@ -1,8 +1,8 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using Mission_6.Models;
+using Mission06_Hatch.Models;
 
-namespace Mission_6.Controllers
+namespace Mission06_Hatch.Controllers
 {
     public class HomeController : Controller
     {

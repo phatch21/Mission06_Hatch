@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Mission_6.Models.Movie>
+﻿@model IEnumerable<Mission06_Hatch.Models.Movie>
 
 <h2>Movie Collection</h2>
 
@@ -24,7 +24,7 @@
                 <td>@movie.Year</td>
                 <td>@movie.Genre</td>
                 <td>@movie.Rating</td>
-                <td>@(movie.Edited.HasValue ? (movie.Edited.Value ? "Yes" : "No") : "N/A")</td>
+                <td>@(movie.Edited ? "Yes" : "No")</td>
                 <td>@movie.LentTo</td>
                 <td>@movie.Notes</td>
             </tr>

@@ -2,11 +2,11 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Mission_6.Models;
+using Mission06_Hatch.Models;
 
 #nullable disable
 
-namespace Mission_6.Migrations
+namespace Mission06_Hatch.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     partial class ApplicationDbContextModelSnapshot : ModelSnapshot
@@ -16,7 +16,7 @@ namespace Mission_6.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.1");
 
-            modelBuilder.Entity("Mission_6.Models.Movie", b =>
+            modelBuilder.Entity("Mission06_Hatch.Models.Movie", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -26,7 +26,7 @@ namespace Mission_6.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<bool?>("Edited")
+                    b.Property<bool>("Edited")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Genre")

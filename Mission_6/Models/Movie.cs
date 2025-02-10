@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Mission_6.Models
+namespace Mission06_Hatch.Models
 {
     public class Movie
     {

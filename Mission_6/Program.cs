@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using Mission_6.Models;
+using Mission06_Hatch.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
