@@ -49,7 +49,7 @@
 
     <div>
         <label asp-for="Edited">Edited:</label>
-        <input asp-for="Edited" type="checkbox" value="true" />
+        <input type="checkbox" asp-for="Edited" value="true" checked="@(Model?.Edited ?? false)" />
     </div>
 
     <div>

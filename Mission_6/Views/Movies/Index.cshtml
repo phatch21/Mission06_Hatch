@@ -1,0 +1,33 @@
+﻿@model IEnumerable<Mission_6.Models.Movie>
+
+<h2>Movie Collection</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Director</th>
+            <th>Year</th>
+            <th>Genre</th>
+            <th>Rating</th>
+            <th>Edited</th>
+            <th>Lent To</th>
+            <th>Notes</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var movie in Model)
+        {
+            <tr>
+                <td>@movie.Title</td>
+                <td>@movie.Director</td>
+                <td>@movie.Year</td>
+                <td>@movie.Genre</td>
+                <td>@movie.Rating</td>
+                <td>@(movie.Edited.HasValue ? (movie.Edited.Value ? "Yes" : "No") : "N/A")</td>
+                <td>@movie.LentTo</td>
+                <td>@movie.Notes</td>
+            </tr>
+        }
+    </tbody>
+</table>

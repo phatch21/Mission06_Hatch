@@ -25,7 +25,7 @@ namespace Mission_6.Models
         [Required]
         public string Rating { get; set; }
 
-        public bool? Edited { get; set; } // Nullable to allow no selection
+        public bool Edited { get; set; } = false; // Nullable to allow no selection
 
         public string? LentTo { get; set; } // Optional
 
