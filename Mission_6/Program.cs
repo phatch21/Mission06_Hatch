@@ -1,3 +1,5 @@
+// Payton Hatch 
+// Group 4-6 
 using Microsoft.EntityFrameworkCore;
 using Mission06_Hatch.Models;
 
