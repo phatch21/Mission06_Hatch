@@ -49,12 +49,12 @@
         </select>
         <span asp-validation-for="Rating" class="text-danger"></span>
     </div>
-
+    <br />
     <div>
-        <label asp-for="Edited">Edited:</label>
+        <label asp-for="Edited">Edited?</label>
         <input type="checkbox" asp-for="Edited" value="true" checked="@(Model?.Edited ?? false)" />
     </div>
-
+    <br />
     <div>
         <label asp-for="LentTo">Lent To:</label>
         <input asp-for="LentTo" class="form-control" />
