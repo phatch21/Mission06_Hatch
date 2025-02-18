@@ -13,6 +13,11 @@ namespace Mission06_Hatch.Controllers
             _context = context;
         }
 
+        public IActionResult Create()
+        {
+            return View();
+        }
+
         public IActionResult MovieTable()
         {
             var movies = _context.Movies.ToList();
