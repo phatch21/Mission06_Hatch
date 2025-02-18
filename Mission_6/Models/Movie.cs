@@ -3,33 +3,39 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Mission06_Hatch.Models
 {
+    [Table("Movies")]
     public class Movie
     {
-        [Key] // Primary Key
+        [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; } // Auto-incrementing primary key
+        public int MovieId { get; set; }
 
-        [Required]
-        public string Title { get; set; }
-
-        [Required]
-        public string Director { get; set; }
-
-        [Required]
-        [Range(1888, 2100, ErrorMessage = "Enter a valid year.")]
+        public int CategoryId { get; set; }
+        public string? Title { get; set; }
         public int Year { get; set; }
+        public string? Director { get; set; }
+        public string? Rating { get; set; }
 
-        [Required]
-        public string Genre { get; set; }
+        [NotMapped]
+        public bool EditedBool
+        {
+            get => Edited == 1;
+            set => Edited = value ? 1 : 0;
+        }
 
-        [Required]
-        public string Rating { get; set; }
+        public int Edited { get; set; } // Stores 0 or 1 in the database
 
-        public bool Edited { get; set; } = false; // Nullable to allow no selection
+        public string? LentTo { get; set; }
 
-        public string? LentTo { get; set; } // Optional
+        [NotMapped]
+        public bool CopiedToPlexBool
+        {
+            get => CopiedToPlex == 1;
+            set => CopiedToPlex = value ? 1 : 0;
+        }
 
-        [MaxLength(25, ErrorMessage = "Notes cannot exceed 25 characters.")]
-        public string? Notes { get; set; } // Optional
+        public int CopiedToPlex { get; set; } // Stores 0 or 1 in the database
+
+        public string? Notes { get; set; }
     }
 }

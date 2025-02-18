@@ -9,16 +9,17 @@
 
 <h2>Movie Collection</h2>
 
-<table class="table">
-    <thead>
+<table class="table table-striped table-bordered">
+    <thead class="thead-dark">
         <tr>
             <th>Title</th>
             <th>Director</th>
             <th>Year</th>
-            <th>Genre</th>
+            <th>Category</th>
             <th>Rating</th>
             <th>Edited</th>
             <th>Lent To</th>
+            <th>Copied to Plex</th>
             <th>Notes</th>
         </tr>
     </thead>
@@ -29,10 +30,12 @@
                 <td>@movie.Title</td>
                 <td>@movie.Director</td>
                 <td>@movie.Year</td>
-                <td>@movie.Genre</td>
+                <td>@movie.CategoryId</td> <!-- Replace with category names if available -->
                 <td>@movie.Rating</td>
-                <td>@(movie.Edited ? "Yes" : "No")</td>
+                <td>@(movie.EditedBool ? "Yes" : "No")</td>
+                
                 <td>@movie.LentTo</td>
+                <td>@(movie.CopiedToPlexBool ? "Yes" : "No")</td>
                 <td>@movie.Notes</td>
             </tr>
         }

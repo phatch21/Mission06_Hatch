@@ -11,6 +11,11 @@
     <div class="alert alert-success">@TempData["SuccessMessage"]</div>
 }
 
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
+}
+
 <form asp-action="Create" method="post">
     <div>
         <label asp-for="Title">Title:</label>
@@ -31,9 +36,16 @@
     </div>
 
     <div>
-        <label asp-for="Genre">Genre:</label>
-        <input asp-for="Genre" class="form-control" required />
-        <span asp-validation-for="Genre" class="text-danger"></span>
+        <label asp-for="CategoryId">Category:</label>
+        <select asp-for="CategoryId" class="form-control">
+            <option value="1">Action</option>
+            <option value="2">Drama</option>
+            <option value="3">Comedy</option>
+            <option value="4">Sci-Fi</option>
+            <option value="5">Horror</option>
+            <option value="6">Documentary</option>
+        </select>
+        <span asp-validation-for="CategoryId" class="text-danger"></span>
     </div>
 
     <div>
@@ -47,14 +59,19 @@
         <span asp-validation-for="Rating" class="text-danger"></span>
     </div>
 
-    <div>
-        <label asp-for="Edited">Edited:</label>
-        <input type="checkbox" asp-for="Edited" value="true" checked="@(Model?.Edited ?? false)" />
+    <div class="form-check">
+        <input type="checkbox" asp-for="EditedBool" class="form-check-input" />
+        <label class="form-check-label" asp-for="EditedBool">Edited</label>
     </div>
 
     <div>
         <label asp-for="LentTo">Lent To:</label>
         <input asp-for="LentTo" class="form-control" />
+    </div>
+
+    <div class="form-check">
+        <input type="checkbox" asp-for="CopiedToPlexBool" class="form-check-input" />
+        <label class="form-check-label" asp-for="CopiedToPlexBool">Copied to Plex</label>
     </div>
 
     <div>

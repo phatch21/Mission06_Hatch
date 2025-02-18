@@ -5,7 +5,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add SQLite Database Connection
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlite("Data Source=movies.db"));
+    options.UseSqlite("Data Source=JoelHiltonMovieCollection.db"));
 
 builder.Services.AddControllersWithViews();
 

@@ -31,5 +31,16 @@ namespace Mission06_Hatch.Controllers
             TempData["SuccessMessage"] = "Movie added successfully!";
             return RedirectToAction("Create");
         }
+        public IActionResult MovieTable()
+        {
+            var movies = _context.Movies.ToList(); // Fetch movies from database
+
+            if (movies == null)
+            {
+                movies = new List<Movie>(); // Ensure it's never null
+            }
+
+            return View(movies); // Pass model to the view
+        }
     }
 }
