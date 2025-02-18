@@ -7,6 +7,21 @@
     <div class="alert alert-success">@TempData["SuccessMessage"]</div>
 }
 
+@{
+    // Mapping CategoryId numbers to category names based on provided values
+    var categoryMapping = new Dictionary<int, string>
+    {
+        { 1, "Miscellaneous" },
+        { 2, "Drama" },
+        { 3, "Television" },
+        { 4, "Horror/Suspense" },
+        { 5, "Comedy" },
+        { 6, "Family" },
+        { 7, "Action/Adventure" },
+        { 8, "VHS" }
+    };
+}
+
 <table class="table table-striped table-bordered">
     <thead class="thead-dark">
         <tr>
@@ -29,7 +44,7 @@
                 <td>@movie.Title</td>
                 <td>@movie.Director</td>
                 <td>@movie.Year</td>
-                <td>@movie.CategoryId</td>
+                <td>@(categoryMapping.ContainsKey(movie.CategoryId) ? categoryMapping[movie.CategoryId] : "Unknown")</td>
                 <td>@movie.Rating</td>
                 <td>@(movie.Edited == 1 ? "Yes" : "No")</td>
                 <td>@movie.LentTo</td>
