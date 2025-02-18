@@ -1,13 +1,11 @@
-﻿@*
-    Payton Hatch
-    Group 4-6
-*@
-@{
-    ViewData["Title"] = "Movie Table";
-}
-@model IEnumerable<Mission06_Hatch.Models.Movie>
+﻿@model IEnumerable<Mission06_Hatch.Models.Movie>
 
 <h2>Movie Collection</h2>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+}
 
 <table class="table table-striped table-bordered">
     <thead class="thead-dark">
@@ -21,6 +19,7 @@
             <th>Lent To</th>
             <th>Copied to Plex</th>
             <th>Notes</th>
+            <th>Actions</th>
         </tr>
     </thead>
     <tbody>
@@ -30,13 +29,17 @@
                 <td>@movie.Title</td>
                 <td>@movie.Director</td>
                 <td>@movie.Year</td>
-                <td>@movie.CategoryId</td> <!-- Replace with category names if available -->
+                <td>@movie.CategoryId</td>
                 <td>@movie.Rating</td>
-                <td>@(movie.EditedBool ? "Yes" : "No")</td>
-                
+                <td>@(movie.Edited == 1 ? "Yes" : "No")</td>
                 <td>@movie.LentTo</td>
-                <td>@(movie.CopiedToPlexBool ? "Yes" : "No")</td>
+                <td>@(movie.CopiedToPlex == 1 ? "Yes" : "No")</td>
                 <td>@movie.Notes</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@movie.MovieId" class="btn btn-warning btn-sm">Edit</a>
+                    <br />
+                    <a asp-action="Delete" asp-route-id="@movie.MovieId" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?');">Delete</a>
+                </td>
             </tr>
         }
     </tbody>

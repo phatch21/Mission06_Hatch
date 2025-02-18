@@ -1,0 +1,92 @@
+﻿@model Mission06_Hatch.Models.Movie
+
+@{
+    ViewData["Title"] = "Edit Movie";
+}
+
+<h2>Edit Movie</h2>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+}
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
+}
+
+<form asp-action="Edit" method="post">
+    <!-- Hidden input to store the MovieId -->
+    <input type="hidden" asp-for="MovieId" />
+
+    <div>
+        <label asp-for="Title">Title:</label>
+        <input asp-for="Title" class="form-control" required />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="Director">Director:</label>
+        <input asp-for="Director" class="form-control" required />
+        <span asp-validation-for="Director" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="Year">Year:</label>
+        <input asp-for="Year" type="number" class="form-control" min="1888" required />
+        <span asp-validation-for="Year" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="CategoryId">Category:</label>
+        <select asp-for="CategoryId" class="form-control">
+            <option value="1">Action</option>
+            <option value="2">Drama</option>
+            <option value="3">Comedy</option>
+            <option value="4">Sci-Fi</option>
+            <option value="5">Horror</option>
+            <option value="6">Documentary</option>
+        </select>
+        <span asp-validation-for="CategoryId" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="Rating">Rating:</label>
+        <select asp-for="Rating" class="form-control">
+            <option value="G">G</option>
+            <option value="PG">PG</option>
+            <option value="PG-13">PG-13</option>
+            <option value="R">R</option>
+        </select>
+        <span asp-validation-for="Rating" class="text-danger"></span>
+    </div>
+
+    <div class="form-check">
+        <input type="checkbox" asp-for="EditedBool" class="form-check-input" />
+        <label class="form-check-label" asp-for="EditedBool">Edited</label>
+    </div>
+
+    <div>
+        <label asp-for="LentTo">Lent To:</label>
+        <input asp-for="LentTo" class="form-control" />
+    </div>
+
+    <div class="form-check">
+        <input type="checkbox" asp-for="CopiedToPlexBool" class="form-check-input" />
+        <label class="form-check-label" asp-for="CopiedToPlexBool">Copied to Plex</label>
+    </div>
+
+    <div>
+        <label asp-for="Notes">Notes:</label>
+        <input asp-for="Notes" class="form-control" maxlength="25" />
+        <span asp-validation-for="Notes" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-success mt-3">Save Changes</button>
+    <a asp-action="MovieTable" class="btn btn-secondary mt-3">Cancel</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

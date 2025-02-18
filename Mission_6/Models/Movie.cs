@@ -10,20 +10,29 @@ namespace Mission06_Hatch.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int MovieId { get; set; }
 
-        public int CategoryId { get; set; }
-        public string? Title { get; set; }
-        public int Year { get; set; }
+        [Required]
+        public string Title { get; set; }
+
         public string? Director { get; set; }
+
+        [Required]
+        [Range(1888, int.MaxValue, ErrorMessage = "Year must be 1888 or later.")]
+        public int Year { get; set; }
+
+
+        [Required]
         public string? Rating { get; set; }
 
-        [NotMapped]
+        [Required]
+        public int CategoryId { get; set; } // ✅ Added CategoryId
+
+        [NotMapped] // Maps integer values as boolean
         public bool EditedBool
         {
             get => Edited == 1;
             set => Edited = value ? 1 : 0;
         }
-
-        public int Edited { get; set; } // Stores 0 or 1 in the database
+        public int Edited { get; set; }
 
         public string? LentTo { get; set; }
 
@@ -33,8 +42,7 @@ namespace Mission06_Hatch.Models
             get => CopiedToPlex == 1;
             set => CopiedToPlex = value ? 1 : 0;
         }
-
-        public int CopiedToPlex { get; set; } // Stores 0 or 1 in the database
+        public int CopiedToPlex { get; set; }
 
         public string? Notes { get; set; }
     }

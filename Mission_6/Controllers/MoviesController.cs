@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Mission06_Hatch.Models;
+using System.Linq;
 
 namespace Mission06_Hatch.Controllers
 {
@@ -12,11 +13,13 @@ namespace Mission06_Hatch.Controllers
             _context = context;
         }
 
-        public IActionResult Create()
+        public IActionResult MovieTable()
         {
-            return View();
+            var movies = _context.Movies.ToList();
+            return View(movies);
         }
 
+        // ✅ Create (Handled in Create.cshtml)
         [HttpPost]
         public IActionResult Create(Movie movie)
         {
@@ -26,21 +29,49 @@ namespace Mission06_Hatch.Controllers
             }
 
             _context.Movies.Add(movie);
-            _context.SaveChanges(); // Save to SQLite
+            _context.SaveChanges();
 
             TempData["SuccessMessage"] = "Movie added successfully!";
-            return RedirectToAction("Create");
+            return RedirectToAction("MovieTable");
         }
-        public IActionResult MovieTable()
-        {
-            var movies = _context.Movies.ToList(); // Fetch movies from database
 
-            if (movies == null)
+        // ✅ Update (Edit Movie)
+        public IActionResult Edit(int id)
+        {
+            var movie = _context.Movies.Find(id);
+            if (movie == null)
             {
-                movies = new List<Movie>(); // Ensure it's never null
+                return NotFound();
+            }
+            return View(movie);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Movie movie)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(movie);
             }
 
-            return View(movies); // Pass model to the view
+            _context.Movies.Update(movie);
+            _context.SaveChanges();
+            
+            TempData["SuccessMessage"] = "Movie updated successfully!";
+            return RedirectToAction("MovieTable");
+        }
+
+        // ✅ Delete (Remove a Movie)
+        public IActionResult Delete(int id)
+        {
+            var movie = _context.Movies.Find(id);
+            if (movie != null)
+            {
+                _context.Movies.Remove(movie);
+                _context.SaveChanges();
+                TempData["SuccessMessage"] = "Movie deleted successfully!";
+            }
+            return RedirectToAction("MovieTable");
         }
     }
 }
