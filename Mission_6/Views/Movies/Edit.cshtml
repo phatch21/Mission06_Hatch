@@ -1,4 +1,8 @@
-﻿@model Mission06_Hatch.Models.Movie
+﻿@* Payton Hatch 
+    Group 4-6
+*@
+
+@model Mission06_Hatch.Models.Movie
 
 @{
     ViewData["Title"] = "Edit Movie";
@@ -20,6 +24,8 @@
     <!-- Hidden input to store the MovieId -->
     <input type="hidden" asp-for="MovieId" />
 
+    @* Divs for each field in the form *@
+
     <div>
         <label asp-for="Title">Title:</label>
         <input asp-for="Title" class="form-control" required />
@@ -38,6 +44,7 @@
         <span asp-validation-for="Year" class="text-danger"></span>
     </div>
 
+    @* form fields with dropdown options *@
     <div>
         <label asp-for="CategoryId">Category:</label>
         <select asp-for="CategoryId" class="form-control">
@@ -85,6 +92,7 @@
         <span asp-validation-for="Notes" class="text-danger"></span>
     </div>
 
+    @* submission button *@
     <button type="submit" class="btn btn-success mt-3">Save Changes</button>
     <a asp-action="MovieTable" class="btn btn-secondary mt-3">Cancel</a>
 </form>

@@ -1,9 +1,13 @@
+// Payton Hatch
+// Group 4-6
+
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Mission06_Hatch.Models;
 
 namespace Mission06_Hatch.Controllers
 {
+    // Home controller class
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;

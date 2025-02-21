@@ -1,9 +1,13 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿// Payton Hatch
+// Group 4-6
+
+using Microsoft.AspNetCore.Mvc;
 using Mission06_Hatch.Models;
 using System.Linq;
 
 namespace Mission06_Hatch.Controllers
 {
+    // movie controller class
     public class MoviesController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -13,18 +17,20 @@ namespace Mission06_Hatch.Controllers
             _context = context;
         }
 
+        // View action for movie form
         public IActionResult Create()
         {
             return View();
         }
 
+        // View action for movie table
         public IActionResult MovieTable()
         {
             var movies = _context.Movies.ToList();
             return View(movies);
         }
 
-        // ✅ Create (Handled in Create.cshtml)
+        //  Adds movie record to DB (Handled in Create.cshtml)
         [HttpPost]
         public IActionResult Create(Movie movie)
         {
@@ -40,7 +46,7 @@ namespace Mission06_Hatch.Controllers
             return RedirectToAction("MovieTable");
         }
 
-        // ✅ Update (Edit Movie)
+        // View for form to update existing movie record (Edit Movie)
         public IActionResult Edit(int id)
         {
             var movie = _context.Movies.Find(id);
@@ -51,6 +57,7 @@ namespace Mission06_Hatch.Controllers
             return View(movie);
         }
 
+        // Updates existing movie record
         [HttpPost]
         public IActionResult Edit(Movie movie)
         {
@@ -66,7 +73,7 @@ namespace Mission06_Hatch.Controllers
             return RedirectToAction("MovieTable");
         }
 
-        // ✅ Delete (Remove a Movie)
+        // Delete record action (Remove a Movie)
         public IActionResult Delete(int id)
         {
             var movie = _context.Movies.Find(id);
